@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* en tu index.css o tailwind.css */
+select {
+  -webkit-appearance: none; /* Safari/Chrome */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;         /* estándar */
+}
