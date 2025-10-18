@@ -1,7 +1,8 @@
 📋 Todo App – README
 
 Este proyecto es una aplicación Todo List con backend en Node.js + Express + MongoDB y frontend en React + Vite + TailwindCSS.
-*SE AGREGO LA BARRA BUSCADORA*
+
+📌📌📌*SE AGREGO LA BARRA BUSCADORA EN ESTE SPRINT*
 
 🚀 Requisitos previos
 
