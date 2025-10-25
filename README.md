@@ -2,7 +2,7 @@
 
 Este proyecto es una aplicación Todo List con backend en Node.js + Express + MongoDB y frontend en React + Vite + TailwindCSS.
 
-📌📌📌*SE AGREGO LA BARRA BUSCADORA EN ESTE SPRINT*
+📌📌📌*SE AGREGO LA ACTUALIZACION AUTOMATICA Y TAMBIEN CAMBIOS DE APARIENCIA
 
 🚀 Requisitos previos
 
