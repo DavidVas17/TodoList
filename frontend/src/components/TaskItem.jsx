@@ -8,6 +8,13 @@ const priorityStyles = {
   low:    "bg-blue-500/15 text-blue-300 border border-blue-500/30",
 };
 
+// Traducción de prioridades
+const priorityLabels = {
+  high: "Alta",
+  medium: "Media",
+  low: "Baja",
+};
+
 function TaskItem({ task, editingTask, setEditingTask, updateTask, deleteTask, toggleTask }) {
   const priority = (task.priority || "medium").toLowerCase();
 
@@ -41,7 +48,7 @@ function TaskItem({ task, editingTask, setEditingTask, updateTask, deleteTask, t
                   {task.title}
                 </h3>
                 <span className={`px-2.5 py-1 text-xs rounded-full uppercase tracking-wider ${priorityStyles[priority] || priorityStyles.medium}`}>
-                  {priority}
+                  {priorityLabels[priority] || priority}
                 </span>
               </div>
 
@@ -54,9 +61,9 @@ function TaskItem({ task, editingTask, setEditingTask, updateTask, deleteTask, t
 
               {/* Fechas */}
               <p className="text-sm text-gray-500 mt-2">
-                Created: {new Date(task.createdAt).toLocaleDateString()}
+                Creada: {new Date(task.createdAt).toLocaleDateString()}
                 {task.updatedAt !== task.createdAt && (
-                  <span> . Updated: {new Date(task.updatedAt).toLocaleDateString()}</span>
+                  <span> · Actualizada: {new Date(task.updatedAt).toLocaleDateString()}</span>
                 )}
               </p>
             </div>

@@ -7,6 +7,7 @@ import Stats from "./components/Stats";
 import { createTaskApi, deleteTaskApi, toggleTaskApi, updateTasksApi } from "./api/taskApi";
 import SearchBar from "./components/SearchBar";
 import PriorityFilter from "./components/PriorityFilter";
+//Barra buscadora agregada
 
 
 import { fetchTaskApi } from "./api/taskApi";
@@ -40,46 +41,50 @@ function App() {
   }, [filter]);
 
 
-  const createTask = async () => {
-    if (!newTask.title.trim()) return;
+// Crear una tarea
+const createTask = async () => {
+  if (!newTask.title.trim()) return;
 
-    try {
-      const data = await createTaskApi(newTask);
-      setTasks([...tasks, data]);
-      setNewTask({ title: "", description: "" });
-      setShowForm(false);
-    } catch (err) {
-      console.log("Error fetching", err);
-    }
-  };
+  try {
+    await createTaskApi(newTask);
+    await fetchTasks(); // recargar tareas desde el servidor
+    setNewTask({ title: "", description: "" });
+    setShowForm(false);
+  } catch (err) {
+    console.log("Error creating task", err);
+  }
+};
 
-  const updateTask = async (id, updates) => {
-    try {
-      const data = await updateTasksApi(id, updates);
-      setTasks(tasks.map((t) => (t._id === id ? data : t))); // ✅ ahora guardas la respuesta completa
-      setEditingTask(null);
-    } catch (err) {
-      console.log("Error fetching", err);
-    }
-  };
+// Actualizar una tarea
+const updateTask = async (id, updates) => {
+  try {
+    await updateTasksApi(id, updates);
+    await fetchTasks(); // recargar tareas
+    setEditingTask(null);
+  } catch (err) {
+    console.log("Error updating task", err);
+  }
+};
 
+// Eliminar una tarea
+const deleteTask = async (id) => {
+  try {
+    await deleteTaskApi(id);
+    await fetchTasks(); // recargar tareas
+  } catch (err) {
+    console.log("Error deleting task", err);
+  }
+};
 
-  const deleteTask = async (id) => {
-    try {
-      await deleteTaskApi(id);
-    } catch (err) {
-      console.log("Error fetching", err);
-    }
-  };
-
-  const toggleTask = async (id) => {
-    try {
-      const updated = await toggleTaskApi(id);
-      setTasks(tasks.map((t) => (t.id === id ? updated : t)));
-    } catch (err) {
-      console.log("Error fetching", err);
-    }
-  };
+// Marcar como completada / pendiente
+const toggleTask = async (id) => {
+  try {
+    await toggleTaskApi(id);
+    await fetchTasks(); //recargar tareas
+  } catch (err) {
+    console.log("Error toggling task", err);
+  }
+};
 
 
   const filteredTasks = tasks.filter((task) => {
@@ -127,13 +132,13 @@ function App() {
         {/* Add New Task Button */}
         <div className="flex justify-end mb-4">
           <button className="px-4 py-2 bg-green-700 text-white rounded-lg shadow-lg hover:bg-green-900 transition" onClick={() => setShowForm(true)}>
-            + Add New Task
+            + Agregar nueva tarea
           </button>
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-3 mb-6">
         <input
           type="text"
-          placeholder="Search tasks by title..."
+          placeholder="Buscar tareas..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="h-[42px] w-full max-w-md px-4 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -145,10 +150,10 @@ function App() {
           className="h-[42px] px-4 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 
                      focus:outline-none focus:ring-2 focus:ring-green-600 transition"
         >
-          <option value="all">All Priorities</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
+          <option value="all">Prioridades</option>
+          <option value="high">Alta</option>
+          <option value="medium">Media</option>
+          <option value="low">Baja</option>
         </select>
       </div>
         <FilterButtons filter={filter} setFilter={setFilter} />

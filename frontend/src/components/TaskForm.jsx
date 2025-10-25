@@ -26,11 +26,11 @@ function TaskForm({ onCancel }) {
 
   return (
     <form onSubmit={handleSubmit} className="bg-gray-800 border border-gray-700 rounded-2xl p-6 shadow-2xl space-y-4">
-      <h3 className="text-lg font-semibold text-white">Add New Task</h3>
+      <h3 className="text-lg font-semibold text-white">Agregar Nueva Tarea</h3>
 
       <input
         type="text"
-        placeholder="Task title..."
+        placeholder="Título de la tarea"
         className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -38,7 +38,7 @@ function TaskForm({ onCancel }) {
       />
 
       <textarea
-        placeholder="Task description (optional)"
+        placeholder="Descripción de la tarea (opcional)"
         rows={3}
         className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white resize-none"
         value={description}
@@ -47,15 +47,15 @@ function TaskForm({ onCancel }) {
 
       {/* Priority */}
       <div className="flex items-center gap-3">
-        <label className="text-gray-300 text-sm">Priority</label>
+        <label className="text-gray-300 text-sm">Prioridad</label>
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
           className="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
         >
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+          <option value="low">Baja</option>
+          <option value="medium">Media</option>
+          <option value="high">Alta</option>
         </select>
       </div>
 
@@ -65,14 +65,14 @@ function TaskForm({ onCancel }) {
           onClick={onCancel}
           className="px-4 py-2 bg-gray-700 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-600"
         >
-          <X size={16} className="inline-block mr-1" /> Cancel
+          <X size={16} className="inline-block mr-1" /> Cancelar
         </button>
         <button
           type="submit"
           disabled={saving}
           className="px-4 py-2 bg-green-700 text-white rounded-lg shadow-lg hover:bg-green-900 transition"
         >
-          <Plus size={16} className="inline-block mr-1" /> {saving ? "Saving..." : "Add Task"}
+          <Plus size={16} className="inline-block mr-1" /> {saving ? "Guardando..." : "Agregar Tarea"}
         </button>
       </div>
     </form>

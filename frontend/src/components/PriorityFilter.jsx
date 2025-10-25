@@ -10,10 +10,10 @@ function PriorityFilter({ priorityFilter, setPriorityFilter }) {
         className="appearance-none h-[42px] px-4 pr-10 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 
                    focus:outline-none focus:ring-2 focus:ring-green-600 transition"
       >
-        <option value="all">All Priorities</option>
-        <option value="high">High</option>
-        <option value="medium">Medium</option>
-        <option value="low">Low</option>
+        <option value="all">Todas</option>
+        <option value="high">Alta</option>
+        <option value="medium">Media</option>
+        <option value="low">Baja</option>
       </select>
 
       {/* Icono personalizado */}

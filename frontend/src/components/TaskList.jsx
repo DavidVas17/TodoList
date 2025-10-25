@@ -5,7 +5,7 @@ function TaskList({ tasks, loading, editingTask, setEditingTask, updateTask, del
   if (tasks.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-gray-400 text-lg">No tasks found, try adding one!</p>
+        <p className="text-gray-400 text-lg">No se encontraron tareas, ¡intenta agregar una!</p>
       </div>
     );
   }

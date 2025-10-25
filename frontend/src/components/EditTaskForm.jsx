@@ -32,15 +32,15 @@ function EditTaskForm({ task, onSave, onCancel }) {
 
       {/* Priority */}
       <div className="flex items-center gap-3">
-        <label className="text-gray-300 text-sm">Priority</label>
+        <label className="text-gray-300 text-sm">Prioridad</label>
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
           className="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
         >
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+          <option value="low">Baja</option>
+          <option value="medium">Media</option>
+          <option value="high">Alta</option>
         </select>
       </div>
 
@@ -50,14 +50,14 @@ function EditTaskForm({ task, onSave, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg flex items-center gap-2 shadow-lg"
         >
-          <Check size={16} /> Save
+          <Check size={16} /> Guardar
         </button>
         <button
           type="button"
           className="px-4 py-2 bg-gray-700 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-600 flex items-center gap-2"
           onClick={onCancel}
         >
-          <X size={16} /> Cancel
+          <X size={16} /> Cancelar
         </button>
       </div>
     </form>
